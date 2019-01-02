@@ -29,5 +29,17 @@ self.addEventListener('activate', function (event) {
   );
 })
 self.addEventListener('fetch', function (event) {
-	console.log('fetch 拦截')
+	event.respondWith(caches.match(event.request).catch(function() {
+		console.log('发送fetch请求')
+    return fetch(event.request);
+  }).then(function(response) {
+		console.log('打开缓存服务员')
+    caches.open(CACHEVERSION).then(function(cache) {
+      cache.put(event.request, response);
+    });
+    return response.clone();
+  }).catch(function() {
+		console.log('还得用')
+    return caches.match('./static/mm1.jpg');
+  }));
 })
