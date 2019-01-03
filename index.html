@@ -19,6 +19,7 @@
 			<p id="sw_txt">当前sw状态：<span id="sw_status"></span></p>
 			<button type="button" name="button" id="btn1">点击获取图片fetch</button>
 			<button type="button" name="button" id="btn2">点击获取图片ajax</button>
+			<button type="button" name="button" id="btn3">点击访问接口ajax</button>
 		</div>
 		<script type="text/javascript">
 			var curTxt = document.querySelector('#cur_txt');
@@ -27,6 +28,7 @@
 			var swStatus = document.querySelector('#sw_status');
 			var btn1 = document.querySelector('#btn1');
 			var btn2 = document.querySelector('#btn2');
+			var btn3 = document.querySelector('#btn3');
 			if ('serviceWorker' in navigator) {
 //				navigator.serviceWorker.register
 				navigator.serviceWorker.register('./serviceWorkerStore.js').then(function (reg){
@@ -63,6 +65,13 @@
 			btn2.onclick = () => {
 				$.get('./cry.jpg', function (res) {
 					console.log(res)
+				})
+			}
+
+			// 点击按钮3发起ajax请求
+			btn2.onclick = () => {
+				$.get('http://car.ctrip.com//json/mark?callback=jQuery111205901231933568096_1546528769406&_=1546528769407', function (res) {
+					console.log('ajax :', res)
 				})
 			}
 		</script>
