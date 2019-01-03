@@ -2,7 +2,8 @@ var CACHEVERSION = "test1";
 var urlsToCache = [
 	'./main.js',
 	'./main.css',
-	'./main.jpg'
+	'./main.jpg',
+	'./index.html'
 ];
 
 self.addEventListener('install', function (event) {
