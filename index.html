@@ -61,8 +61,8 @@
 
 			// 点击按钮2发起ajax请求
 			btn2.onclick = () => {
-				$.get('./cry.jpg', res => {
-					console.log('ajax :', res)
+				$.get('./cry.jpg', function (res) {
+					console.log(res)
 				})
 			}
 		</script>
