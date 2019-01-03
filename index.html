@@ -16,14 +16,17 @@
 			<img class="boxImg" src="./main.jpg"/>
 			<p id="cur_txt">当前注册状态：<span id="cur_status"></span></p>
 			<p id="sw_txt">当前sw状态：<span id="sw_status"></span></p>
-			<button type="button" name="button" id="btn1">点击获取图片</button>
+			<button type="button" name="button" id="btn1">点击获取图片fetch</button>
+			<button type="button" name="button" id="btn2">点击获取图片ajax</button>
 		</div>
+		<script type="text/javascript" src="./JQuery3.2.1.js"></script>
 		<script type="text/javascript">
 			var curTxt = document.querySelector('#cur_txt');
 			var curStatus = document.querySelector('#cur_status');
 			var swTxt = document.querySelector('#sw_txt');
 			var swStatus = document.querySelector('#sw_status');
 			var btn1 = document.querySelector('#btn1');
+			var btn2 = document.querySelector('#btn2');
 			if ('serviceWorker' in navigator) {
 //				navigator.serviceWorker.register
 				navigator.serviceWorker.register('./serviceWorkerStore.js').then(function (reg){
@@ -48,11 +51,18 @@
 					console.log(err)
 				})
 			}
-			
+
 			// 点击按钮1发起fetch请求
 			btn1.onclick = () => {
 				fetch('./cry.jpg').then(res => {
-					console.log(res)
+					console.log('fetch :', res)
+				})
+			}
+
+			// 点击按钮2发起ajax请求
+			btn2.onclick = () => {
+				$.get('./cry.jpg', res => {
+					console.log('ajax :', res)
 				})
 			}
 		</script>
