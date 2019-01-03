@@ -30,7 +30,10 @@ self.addEventListener('activate', function (event) {
 })
 self.addEventListener('fetch', function (event) {
 	console.log(event.request)
-	event.respondWith().then(function(response) {
+	event.respondWith(caches.match(event.request).catch(function() {
+		console.log('fetch请求失败')
+    return fetch(event.request);
+  }).then(function(response) {
 		console.log('打开缓存服务员')
     caches.open(CACHEVERSION).then(function(cache) {
       cache.put(event.request, response);
