@@ -17,7 +17,6 @@ self.addEventListener('install', function (event) {
 self.addEventListener('activate', function (event) {
   event.waitUntil(
     caches.keys().then(function(cacheNames) {
-    	console.log(cacheNames)
       return Promise.all(
         cacheNames.map(function(cacheName) {
           // 如果当前版本和缓存版本不一致
@@ -31,10 +30,7 @@ self.addEventListener('activate', function (event) {
 })
 self.addEventListener('fetch', function (event) {
 	console.log(event.request)
-	event.respondWith(caches.match(event.request).catch(function() {
-		console.log('fetch请求失败')
-    return fetch(event.request);
-  }).then(function(response) {
+	event.respondWith().then(function(response) {
 		console.log('打开缓存服务员')
     caches.open(CACHEVERSION).then(function(cache) {
       cache.put(event.request, response);
