@@ -40,6 +40,6 @@ self.addEventListener('fetch', function (event) {
     return response.clone();
   }).catch(function() {
 		console.log('还得用')
-    return caches.match('./static/mm1.jpg');
+    return caches.match('./main.jpg');
   }));
 })
