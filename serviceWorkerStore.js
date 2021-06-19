@@ -1,4 +1,4 @@
-var CACHEVERSION = "test1";
+var CACHEVERSION = "test2";
 var urlsToCache = [
 	'./main.js',
 	'./main.css',
@@ -35,7 +35,7 @@ self.addEventListener('fetch', function (event) {
 		console.log('fetch请求失败')
     return fetch(event.request);
   }).then(function(response) {
-		console.log('打开缓存服务员')
+		console.log('打开缓存服务员 response is ', response)
     caches.open(CACHEVERSION).then(function(cache) {
       cache.put(event.request, response);
     });
