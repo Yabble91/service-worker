@@ -1,4 +1,4 @@
-var CACHEVERSION = "test2";
+var CACHEVERSION = "test3";
 var urlsToCache = [
 	'./main.js',
 	'./main.css',
