@@ -4,7 +4,7 @@ var urlsToCache = [
 	'./main.css',
 	'./main.jpg',
 	// './index.html',
-	'./JQuery3.2.1.js'
+	// './JQuery3.2.1.js'
 ];
 
 self.addEventListener('install', function (event) {
